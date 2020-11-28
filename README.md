@@ -1,1 +1,1 @@
-# Quispe_CSCI2275_FinalProjec
+# Quispe_CSCI2275_FinalProject
