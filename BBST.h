@@ -57,6 +57,7 @@ public:
 protected:
     
 private:
+    bool benfordCalled = false;
     void printRelFreq(std:: string type);
     countyNode* searchBBST(std::string word); //DONE
     void insertToVector(int digit, vector<int> &relFreq, string type);
