@@ -9,11 +9,11 @@ https://www.youtube.com/watch?v=vIsDjbhbADY
 
 g++ finalProject.cpp BBST.cpp LL.cpp -std=c++11 -o finalProject
 
-*to load in file*
+*to load in file...*
 
 ./finalProject allElectionData.txt
 
-Functions
+**Functions**
 1. printInOrderBBST()
      -This will print out all of the counties in the BBST and all the counties from within the linked lists of each BST node.
 2. winningCountiesForState()
