@@ -5,6 +5,11 @@ When running the code, please use allElectionData.txt. All of the functions work
 For clarification when interpreting the results from my program I’d advise that you watch this video about Benford’s law. You only have to watch up to 5 minutes to get a sense of what’s happening. 
 https://www.youtube.com/watch?v=vIsDjbhbADY
 
+**Command Lines**
+g++ finalProject.cpp BBST.cpp LL.cpp -std=c++11 -o finalProject
+*to load in file*
+./finalProject allElectionData.txt
+
 Functions
 1. printInOrderBBST()
      -This will print out all of the counties in the BBST and all the counties from within the linked lists of each BST node.
