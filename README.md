@@ -6,8 +6,11 @@ For clarification when interpreting the results from my program I’d advise tha
 https://www.youtube.com/watch?v=vIsDjbhbADY
 
 **Command Lines**
+
 g++ finalProject.cpp BBST.cpp LL.cpp -std=c++11 -o finalProject
+
 *to load in file*
+
 ./finalProject allElectionData.txt
 
 Functions
