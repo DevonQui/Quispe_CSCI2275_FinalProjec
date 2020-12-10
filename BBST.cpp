@@ -83,10 +83,18 @@ void BBST::winningCountiesForState(string state, string candidate){
                     cout<<"Trump won in "<< n->name << " with " << n->trumpPercent<<" percent of the vote"<<endl;
                 }
             }
+            else{
+                cout<<"Please try again. Enter either 'Trump' or 'Biden'"<<endl;
+                return;
+            }
             if(candidate == "Biden"){
                 if(n->bidenPercent > n->trumpPercent){
                     cout<<"Biden/Harris won in "<< n->name << " with " << n->bidenPercent<<" percent of the vote"<<endl;
                 }
+            }
+            else{
+                cout<<"Please try again. Enter either 'Trump' or 'Biden'"<<endl;
+                return;
             }
         }
         else if(!n->duplicates.isEmpty()){
@@ -188,6 +196,7 @@ void BBST::printCountyStatistics(string state, string countyName){
 }
 
 void BBST::stateBenford_first(string state, string candidate){
+    benfordCalled = true;
     relFreq.clear();
     for(int i = 0; i < 9; i++){
         relFreq.push_back(0);
@@ -244,6 +253,20 @@ void BBST::printRelFreq(string type){
 }
 
 void BBST::showBenfordStats(string type){
+    if(benfordCalled == false){
+        cout<<"ERROR: CALL ONE OF THE OPTIONS 6-9 BEFORE YOU DISPLAY BENFORD STATISTICS"<<endl;
+        return;
+    }
+    bool validInputs = false;
+    for(int i = 0; i < relFreq.size(); i++){
+        if(relFreq[i] != 0){
+            validInputs = true;
+        }
+    }
+    if(!validInputs){
+        cout<<"ERROR: THE INPUTS FOR THE BENFORD TEST WERE INVALID"<<endl;
+        return;
+    }
     int total = 0;
     if(type == "First"){
         for(int i = 0; i < 9; i++){
@@ -265,6 +288,7 @@ void BBST::showBenfordStats(string type){
 }
 
 void BBST::countryBenford_first(string candidate){
+    benfordCalled = true;
     relFreq.clear();
     for(int i = 0; i < 9; i++){
         relFreq.push_back(0);
@@ -306,6 +330,7 @@ void BBST::countryBenford_first(string candidate){
 }
 
 void BBST::stateBenford_second(string state, string candidate){
+    benfordCalled = true;
     relFreq.clear();
     for(int i = 0; i < 10; i++){
         relFreq.push_back(0);
@@ -353,6 +378,7 @@ void BBST::stateBenford_second(string state, string candidate){
 }
 
 void BBST::countryBenford_second(string candidate){
+    benfordCalled = true;
     relFreq.clear();
     for(int i = 0; i < 10; i++){
         relFreq.push_back(0);
@@ -394,6 +420,7 @@ void BBST::countryBenford_second(string candidate){
 }
 
 void BBST::insertToVector(int digit, vector<int> &relFreq, string type){
+    benfordCalled = true;
     if(type == "Second"){
         if(digit == 0){
             relFreq[0] = relFreq[0] + 1;
