@@ -4,7 +4,7 @@
 #include <vector>
 using namespace std;
 
-
+//This is my function to print out all of the words within the linked list of a countyNode
 void LLcounties::printLLWords(){
     if(first == NULL){
         cout<<"No new words have been added"<<endl;
@@ -16,7 +16,7 @@ void LLcounties::printLLWords(){
         crawler = crawler->next;
     }
 };
-
+//this is my insert function for my countyNodes when inserting duplicates found when creating the Benford BST from reading in the file
 void LLcounties::addCounty(string cName, string sName, string trumpNum, double tPct, string bidenNum, double bPct){
     LLcounty * tmp = first;
     if(first == NULL){
@@ -31,12 +31,19 @@ void LLcounties::addCounty(string cName, string sName, string trumpNum, double t
     return;
 };
 
+//This is just a private function to determine whether or not the linked list object is empty or not
 bool LLcounties::isEmpty(){
     if(first != NULL){
         return false;
     }
     return true;
 }
+
+/*
+this is the function that we call within winningCountiesForState() when we want to check if there are counties stored within a BST nodes
+match the parameters given by the user. If they are met then we can print out the values accordingly. To check who won in a specific county
+I check which candidate had the highest percentage points. 
+*/
 
 void LLcounties::printStateCandidateCombo(std::string state, std::string candidate){
     LLcounty *currentWord = first;
@@ -62,7 +69,10 @@ void LLcounties::printStateCandidateCombo(std::string state, std::string candida
     }
     return;
 };
-
+/*
+This is the function this is called within the BBST version of minVoterCount() so that we can also look at all the nodes of a
+linked list object to see if they are above the minimum voter amount or not. If they are then we can print out these values. 
+*/
 void LLcounties::LLminVoterCount(std::string state, int minVoterNum){
     LLcounty *currentWord = first;
     if(currentWord == NULL){
@@ -83,6 +93,10 @@ void LLcounties::LLminVoterCount(std::string state, int minVoterNum){
     return;
 };
 
+/*
+This is also a function called within the BBST version of closeElections() where we see if any of the duplicates within the
+linked list were also close elections based on the user parameter of state. 
+*/
 void LLcounties::LLcloseElections(std::string state){
     LLcounty *currentWord = first;
     if(currentWord == NULL){
@@ -102,6 +116,10 @@ void LLcounties::LLcloseElections(std::string state){
     return;
 };
 
+/*
+This is also a function called within the BBST version of printCountyStatistics() where we see if any of the duplicates within the
+linked list also match the users parameter of state and countyName in case the user wants a county that is stored deep within a linked list somewhere 
+*/
 void LLcounties::LLprintCountyStatistics(std::string state, std::string countyName){
     LLcounty *currentWord = first;
     if(currentWord == NULL){
@@ -122,6 +140,11 @@ void LLcounties::LLprintCountyStatistics(std::string state, std::string countyNa
     return;
 };
 
+/*
+This is also a function called within the BBST version of stateBenford_first() where we see if any of the duplicates within the
+linked list also matched the state parameter of the user input. This function also have a reference to a vector so that when I call it
+within the original function, I'll be able to modify it just the same and not make another copy of it. 
+*/
 void LLcounties::LLstateBenford_first(string state, string candidate, vector<int> &relFreq){
     LLcounty *currentWord = first;
     char firstDig;
@@ -151,7 +174,11 @@ void LLcounties::LLstateBenford_first(string state, string candidate, vector<int
     }
     return;
 }
-
+/*
+This is also a function called within the BBST version of countryBenford_first() where we also collect data
+on all of the linked list nodes as well. This function also have a reference to a vector so that when I call it
+within the original function, I'll be able to modify it just the same and not make another copy of it. 
+*/
 void LLcounties::LLcountryBenford_first(std::string candidate, vector<int> &relFreq){
     LLcounty *currentWord = first;
     char firstDig;
@@ -172,7 +199,11 @@ void LLcounties::LLcountryBenford_first(std::string candidate, vector<int> &relF
             currentWord = currentWord->next;
         }
 }
-
+/*
+This is also a function called within the BBST version of stateBenford_second() where we see if any of the duplicates within the
+linked list also matched the state parameter of the user input. This function also have a reference to a vector so that when I call it
+within the original function, I'll be able to modify it just the same and not make another copy of it. 
+*/
 void LLcounties::LLstateBenford_second(string state, string candidate, vector<int> &relFreq){
     LLcounty *currentWord = first;
     char secondDig;
@@ -201,7 +232,11 @@ void LLcounties::LLstateBenford_second(string state, string candidate, vector<in
     }
     return;
 }
-
+/*
+This is also a function called within the BBST version of countryBenford_second() where we also collect data
+on all of the linked list nodes as well. This function also have a reference to a vector so that when I call it
+within the original function, I'll be able to modify it just the same and not make another copy of it. 
+*/
 void LLcounties::LLcountryBenford_second(std::string candidate, vector<int> &relFreq){
     LLcounty *currentWord = first;
     char secondDig;
@@ -233,6 +268,11 @@ void LLcounties::LLcountryBenford_second(std::string candidate, vector<int> &rel
     }
 }
 
+/*
+This is my function for incrementing the frequency of a specific digit within the private vector variable stored included within
+the BBST.h header file. For this depending on whether or not we are inserting for a second or first degree Benford's Law test we will
+insert for numbers from 0-9 or 1-9 respectively. 
+*/
 void LLcounties::insertToVector(int digit, vector<int> &relFreq, string type){
     if(type == "Second"){
         if(digit == 0){
