@@ -7,6 +7,10 @@ When running the code, please use allElectionData.txt. All of the functions work
 For clarification when interpreting the results from my program I’d advise that you watch this video about Benford’s law. You only have to watch up to 5 minutes to get a sense of what’s happening.
 https://www.youtube.com/watch?v=vIsDjbhbADY
 
+**About Election Data**
+
+I got all of the election data I used in this program from Politico.com. Unfortunately, they did not have data on Alaskan counties when I was creating a data file so it is not included in the published file. However, there are still 3,111 counties in the current file which is sufficient to create a reliable Benford analysis. There's also a few key US counties that are missing from the data file such as Los Angeles County, San Bernardino County, and other large counties. These counties happen to be some of the biggest in the USA so I'm rationalizing their absence to them not having an official ballot count at the time I created this data file. Nonetheless, their absence will not have a dramatic affect on the outcome of the analysis.
+
 **Command Lines**
 
 g++ finalProject.cpp BBST.cpp LL.cpp -std=c++11 -o finalProject
